@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 
-import { BrowserRouter as Router, Route,  NavLink } from 'react-router-dom';
+import { BrowserRouter as Router, Route, NavLink } from 'react-router-dom';
 
 {
   /*
@@ -34,8 +34,15 @@ const Params = (props) => {
   console.log(history);
 
   return (
-    <div>Params: { match.params.name } </div>
+    <div>Params: { match.params.name} </div>
   )
+}
+
+const activeCalled = (match) => {
+  if (!match) {
+    return false;
+  }
+  console.log("active on: " + match.url);
 }
 
 function App() {
@@ -46,12 +53,12 @@ function App() {
         {/* Links da aplicação */}
 
         <ul>
-          <li><NavLink to="/">Home</NavLink></li>
-          <li><NavLink to="/about">About</NavLink></li>
-          <li><NavLink to="/contact">Contact</NavLink></li>
-          <li><NavLink to="/users">Users</NavLink></li>
-          <li><NavLink to="/admin">Admin</NavLink></li>
-          <li><NavLink to="/params">Params</NavLink></li>
+          <li><NavLink isActive={activeCalled} to="/">Home</NavLink></li>
+          <li><NavLink isActive={activeCalled} to="/about">About</NavLink></li>
+          <li><NavLink isActive={activeCalled} to="/contact">Contact</NavLink></li>
+          <li><NavLink isActive={activeCalled} to="/users">Users</NavLink></li>
+          <li><NavLink isActive={activeCalled} to="/admin">Admin</NavLink></li>
+          <li><NavLink isActive={activeCalled} to="/params">Params</NavLink></li>
         </ul>
         <hr />
 
