@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route,  NavLink } from 'react-router-dom';
 
 {
   /*
@@ -46,12 +46,12 @@ function App() {
         {/* Links da aplicação */}
 
         <ul>
-          <li><Link to="/">Home</Link></li>
-          <li><Link to="/about">About</Link></li>
-          <li><Link to="/contact">Contact</Link></li>
-          <li><Link to="/users">Users</Link></li>
-          <li><Link to="/admin">Admin</Link></li>
-          <li><Link to="/params">Params</Link></li>
+          <li><NavLink to="/">Home</NavLink></li>
+          <li><NavLink to="/about">About</NavLink></li>
+          <li><NavLink to="/contact">Contact</NavLink></li>
+          <li><NavLink to="/users">Users</NavLink></li>
+          <li><NavLink to="/admin">Admin</NavLink></li>
+          <li><NavLink to="/params">Params</NavLink></li>
         </ul>
         <hr />
 
