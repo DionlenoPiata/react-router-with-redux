@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 
-import { BrowserRouter as Router, Route, NavLink } from 'react-router-dom';
+import { BrowserRouter as Router, Route, NavLink, Switch, Redirect, Prompt } from 'react-router-dom';
 
 {
   /*
@@ -18,6 +18,16 @@ import { BrowserRouter as Router, Route, NavLink } from 'react-router-dom';
     - children - sempre vai redenrizar, indiferente da url que vai colocar
     - exact - renderizar somente esse componente, sem "concatenar com outros..."
     - strict - so redenriza se o link for exatamente como está na rota.
+
+  - (NavLink) => um link com mais funcionalidades
+    - pode fazer a chamada de uma função
+
+  - (Switch) => parecido com o switch case, seleciona uma unica rota
+
+  - (Redirect) => faz o redirecionamento de rota
+
+  - (Prompt) => chama uma alerta toda vez que muda de rota
+    - você pode colocar para abrir seguindo uma condição no when
   */
 }
 
@@ -63,13 +73,17 @@ function App() {
         <hr />
 
         {/* quando componente ou render responde por uma rotas */}
-
-        <Route exact path="/" component={Home} />
-        <Route path="/about" component={About} />
-        <Route path="/contact" component={Contact} />
-        <Route path="/users" component={Users} />
-        <Route path="/admin" render={() => <div>Admin area</div>} /> {/* modelo diferente */}
-        <Route path="/params/:name" component={Params} />
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Redirect exact from='/teste' to='/' />
+          <Route path="/about" component={About} />
+          <Route path="/contact" component={Contact} />
+          <Route path="/users" component={Users} />
+          <Route path="/admin" render={() => <div>Admin area</div>} /> {/* modelo diferente */}
+          <Route path="/params/:name" component={Params} /> {/* modelo com parametro */}
+          <Route component={() => <div><h1>Não encontrado!</h1></div>} />
+          <Prompt whe={true} message="Tem certeza?" />
+        </Switch>
 
       </div>
     </Router>
